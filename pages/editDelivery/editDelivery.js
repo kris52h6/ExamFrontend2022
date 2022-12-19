@@ -4,7 +4,7 @@ import { handleHttpErrors, getIdFromUrl, sanitizeStringWithTableRows, makeOption
 export function initEditDelivery() {
     getDeliveryFromUrl();
     getProductOrders();
-    document.querySelector("#add-product-submit").onclick = addProductToOrder;
+    document.querySelector("form").addEventListener("submit", addProductToOrder);
 }
 
 async function getDeliveryFromUrl() {
@@ -35,7 +35,6 @@ async function getProductOrders() {
 }
 
 function displayProductOrders(productOrderList) {
-    console.log(productOrderList);
     const listData = productOrderList
         .map(
             (po) =>
@@ -62,6 +61,7 @@ function displayProductOrders(productOrderList) {
 }
 
 async function addProductToOrder() {
+    console.log("pp");
     const productOrder = createProductOrderFromFormInput();
     const productOrderRequest = makeOptions("POST", productOrder);
 

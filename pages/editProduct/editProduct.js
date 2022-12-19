@@ -10,6 +10,7 @@ export function initEditProduct() {
 
 async function getProduct() {
     clearResponse();
+    clearProduct();
     const productName = document.querySelector("#product-name").value;
 
     try {
@@ -86,4 +87,10 @@ function getProductFromFormInput() {
 
 function getIdFromUrl() {
     return window.location.href.split("=")[1];
+}
+
+function clearProduct() {
+    document.querySelector("#name").value = "";
+    document.querySelector("#price").value = "";
+    document.querySelector("#weight").value = "";
 }
