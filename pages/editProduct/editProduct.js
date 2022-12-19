@@ -1,24 +1,25 @@
 import { PRODUCTS_URL } from "../../settings.js";
-import { handleHttpErrors, displayResponse, clearResponse } from "../../utils.js";
+import { handleHttpErrors, displayResponse, clearResponse, makeOptions } from "../../utils.js";
 
 export function initEditProduct() {
     document.querySelector("#get-product-submit").onclick = getProduct;
-    displayProductFromUrl();
-    // clearResponse();
+    document.querySelector("#submit").onclick = editProduct;
+    document.querySelector("#delete").onclick = deleteProduct;
+    getProductFromUrl();
 }
 
 async function getProduct() {
-    const productId = document.querySelector("#product-id").value;
+    clearResponse();
+    const productName = document.querySelector("#product-name").value;
 
     try {
-        const product = await fetch(PRODUCTS_URL + "/" + productId).then(handleHttpErrors);
+        const product = await fetch(PRODUCTS_URL + "/name/" + productName).then(handleHttpErrors);
         displayProduct(product);
     } catch (err) {
         if (err.apiError) {
-            console.error("Full API error: ", err.apiError);
             displayResponse(err.apiError.message, true);
         } else {
-            console.error(err.message);
+            // console.error(err.message);
         }
     }
 }
@@ -27,18 +28,60 @@ function displayProduct(product, productId) {
     document.querySelector("#name").value = product.name;
     document.querySelector("#price").value = product.price;
     document.querySelector("#weight").value = product.weight;
-    console.log(productId);
-    if (productId != undefined) {
-        document.querySelector("#product-id").value = productId;
-    }
+    document.querySelector("#id").value = product.id;
+    document.querySelector("#product-name").value = product.name;
 }
 
-async function displayProductFromUrl() {
+async function getProductFromUrl() {
     const productId = getIdFromUrl();
     if (productId != undefined) {
         const product = await fetch(PRODUCTS_URL + "/" + productId).then(handleHttpErrors);
         displayProduct(product, productId);
     }
+}
+
+async function editProduct() {
+    const newProduct = getProductFromFormInput();
+    const productId = document.querySelector("#id").value;
+
+    const editProductRequest = makeOptions("PUT", newProduct);
+
+    try {
+        await fetch(PRODUCTS_URL + "/" + productId, editProductRequest).then(handleHttpErrors);
+        displayResponse("Produkt gemt", false);
+    } catch (err) {
+        if (err.apiError) {
+            displayResponse(err.apiError.message, true);
+        } else {
+            // console.error(err.message);
+        }
+    }
+}
+
+async function deleteProduct() {
+    const productId = document.querySelector("#id").value;
+
+    const editProductRequest = makeOptions("DELETE");
+
+    try {
+        await fetch(PRODUCTS_URL + "/" + productId, editProductRequest).then(handleHttpErrors);
+        displayResponse("Produkt slettet", false);
+    } catch (err) {
+        if (err.apiError) {
+            displayResponse(err.apiError.message, true);
+        } else {
+            // console.error(err.message);
+        }
+    }
+}
+
+function getProductFromFormInput() {
+    const product = {
+        name: document.querySelector("#name").value,
+        price: document.querySelector("#price").value,
+        weight: document.querySelector("#weight").value,
+    };
+    return product;
 }
 
 function getIdFromUrl() {

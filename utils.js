@@ -119,3 +119,7 @@ export function displayResponse(msg, isError) {
 export function clearResponse() {
     document.querySelector(".response").innerHTML = DOMPurify.sanitize("");
 }
+
+export function getIdFromUrl() {
+    return window.location.href.split("=")[1];
+}

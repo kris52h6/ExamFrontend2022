@@ -38,6 +38,9 @@ function goToAddProduct() {
 }
 
 function goToEditProductById(evt) {
+    if (evt.target.tagName.toLowerCase() !== "a") {
+        return;
+    }
     const productId = evt.target.id;
     window.location = "#/editProduct?=" + productId;
 }

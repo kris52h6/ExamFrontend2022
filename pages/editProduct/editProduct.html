@@ -1,18 +1,20 @@
 <div class="template">
     <h1>Produktinformation</h1>
     <form id="get-product">
-        <label for="product-id">ID:</label>
-        <input id="product-id" type="number" placeholder="Indtast produkt id" />
+        <label for="product-name">Produktnavn:</label>
+        <input id="product-name" type="text" placeholder="Indtast produktnavn" />
         <input id="get-product-submit" class="btn btn-secondary" value="Hent produkt" />
     </form>
     <form>
+        <input id="id" hidden />
         <label for="name">Navn:</label>
         <input id="name" type="text" class="form-control" required />
         <label for="price">Pris:</label>
         <input id="price" type="number" step="0.01" class="form-control" required />
         <label for="weight">Vægt:</label>
         <input id="weight" type="number" step="0.01" class="form-control" required />
-        <input id="submit" type="submit" value="Rediger produkt" class="btn btn-secondary" />
+        <input id="submit" type="submit" value="Gem produkt" class="btn btn-secondary" />
+        <input id="delete" type="submit" value="Slet produkt" class="btn btn-danger" />
     </form>
     <p class="response"></p>
 </div>

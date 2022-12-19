@@ -11,7 +11,8 @@ async function addProduct() {
 
     const productRequest = makeOptions("POST", newProduct);
     try {
-        await fetch(PRODUCTS_URL, productRequest).then(handleHttpErrors).then(displayResponse("Produkt tilføjet", false));
+        await fetch(PRODUCTS_URL, productRequest).then(handleHttpErrors);
+        displayResponse("Produkt tilføjet", false);
     } catch (err) {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);

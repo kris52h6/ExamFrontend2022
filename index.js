@@ -6,6 +6,7 @@ import { initAddProduct } from "./pages/addProduct/addProduct.js";
 import { initEditProduct } from "./pages/editProduct/editProduct.js";
 import { initDeliveries } from "./pages/deliveries/deliveries.js";
 import { initAddDelivery } from "./pages/addDelivery/addDelivery.js";
+import { initEditDelivery } from "./pages/editDelivery/editDelivery.js";
 
 window.addEventListener("load", async () => {
     const templateHome = await loadHtml("./pages/home/home.html");
@@ -15,6 +16,7 @@ window.addEventListener("load", async () => {
     const templateEditProduct = await loadHtml("./pages/editProduct/editProduct.html");
     const templateDeliveries = await loadHtml("./pages/deliveries/deliveries.html");
     const templateAddDelivery = await loadHtml("./pages/addDelivery/addDelivery.html");
+    const templateEditDelivery = await loadHtml("./pages/editDelivery/editDelivery.html");
 
     adjustForMissingHash();
 
@@ -51,6 +53,10 @@ window.addEventListener("load", async () => {
             "/addDelivery": () => {
                 renderTemplate(templateAddDelivery, "content");
                 initAddDelivery();
+            },
+            "/editDelivery": () => {
+                renderTemplate(templateEditDelivery, "content");
+                initEditDelivery();
             },
         })
         .notFound(() => {

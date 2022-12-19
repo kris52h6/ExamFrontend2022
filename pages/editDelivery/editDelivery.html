@@ -1,0 +1,39 @@
+<div class="container template">
+    <div class="col">
+        <h1>Bestilling</h1>
+        <form>
+            <label for="date">Dato:</label>
+            <input id="date" type="text" class="form-control" readonly />
+            <label for="warehouse">Varehus:</label>
+            <input id="warehouse" type="text" class="form-control" readonly />
+            <label for="destination">Destination:</label>
+            <input id="destination" type="text" class="form-control" readonly />
+        </form>
+    </div>
+
+    <div class="row">
+        <h1>Produktordre</h1>
+        <div class="col">
+            <form class="" id="add-product">
+                <label for="product-name">Produktnavn:</label>
+                <input id="product-name" type="text" placeholder="Indtast produktnavn" class="form-control" required />
+                <label for="product-quantity">Antal:</label>
+                <input id="product-quantity" type="number" placeholder="Indtast antal" class="form-control" required />
+                <input id="add-product-submit" class="btn btn-secondary" value="Tilføj produkt til ordren" />
+            </form>
+            <p class="response"></p>
+        </div>
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Antal</th>
+                    <th>Produktnavn</th>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+            <p id="total-price">Totalpris:</p>
+            <p id="total-weight">Totalvægt:</p>
+        </div>
+    </div>
+    </div>
+</div>
