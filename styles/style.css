@@ -4,15 +4,19 @@ body > * {
 }
 
 .navbar-nav .nav-link.active {
-    background-color: lightblue;
+    background-color: grey;
+}
+
+#content {
+    margin-top: 40px;    
 }
 
 .tr {
     transition: all .2s ease-in-out; 
-
+    cursor: pointer;
 }
 
 .tr:hover {
-    background-color: lightblue;
+    /* background-color: #212529; */
     transform: scale(1.02);
 }

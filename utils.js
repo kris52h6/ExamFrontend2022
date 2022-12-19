@@ -110,3 +110,8 @@ export function makeOptions(method, body) {
     }
     return opts;
 }
+
+export function displayResponse(msg, isError) {
+    isError ? (document.querySelector(".response").style.color = "Red") : (document.querySelector(".response").style.color = "Green");
+    document.querySelector(".response").innerHTML = DOMPurify.sanitize(msg);
+}
