@@ -5,12 +5,12 @@ export function initEditProduct() {
     document.querySelector("#get-product-submit").onclick = getProduct;
     document.querySelector("#submit").onclick = editProduct;
     document.querySelector("#delete").onclick = deleteProduct;
+    clearResponse();
+    clearProduct();
     getProductFromUrl();
 }
 
 async function getProduct() {
-    clearResponse();
-    clearProduct();
     const productName = document.querySelector("#product-name").value;
 
     try {
@@ -20,7 +20,7 @@ async function getProduct() {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);
         } else {
-            // console.error(err.message);
+            displayResponse(err.message, true);
         }
     }
 }
@@ -54,7 +54,7 @@ async function editProduct() {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);
         } else {
-            // console.error(err.message);
+            displayResponse(err.message, true);
         }
     }
 }
@@ -71,7 +71,7 @@ async function deleteProduct() {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);
         } else {
-            // console.error(err.message);
+            displayResponse(err.message, true);
         }
     }
 }
@@ -90,6 +90,7 @@ function getIdFromUrl() {
 }
 
 function clearProduct() {
+    document.querySelector("#product-name").value = "";
     document.querySelector("#name").value = "";
     document.querySelector("#price").value = "";
     document.querySelector("#weight").value = "";

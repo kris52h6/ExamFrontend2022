@@ -31,7 +31,7 @@ async function getProductOrders() {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);
         } else {
-            // console.error(err.message);
+            displayResponse(err.message, true);
         }
     }
 }
@@ -74,7 +74,7 @@ async function addProductToOrder() {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);
         } else {
-            // console.error(err.message);
+            displayResponse(err.message, true);
         }
     }
 }
@@ -105,7 +105,7 @@ async function addDeliveryToVan() {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);
         } else {
-            // console.error(err.message);
+            displayResponse(err.message, true);
         }
     }
 }

@@ -17,14 +17,11 @@ body > * {
 }
 
 .tr:hover {
-    /* background-color: #212529; */
     transform: scale(1.02);
 }
 
 .row {
     margin-top: 30px !important;
-}
-
-#van-form {
-    margin-bottom: 100px;
+    border: 1px solid black;
+    padding: 40px;
 }

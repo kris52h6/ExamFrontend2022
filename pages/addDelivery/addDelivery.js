@@ -19,7 +19,7 @@ async function addDelivery() {
         if (err.apiError) {
             displayResponse(err.apiError.message, true);
         } else {
-            // console.error(err.message);
+            displayResponse(err.message, true);
         }
     }
 }

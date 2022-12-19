@@ -36,7 +36,6 @@ async function getAssignedDeliveries() {
 }
 
 function displayDeliveries(deliveries) {
-    console.log(deliveries);
     const deliveriesData = deliveries
         .map(
             (d) =>
