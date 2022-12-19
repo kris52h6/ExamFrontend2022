@@ -14,10 +14,9 @@ async function addProduct() {
         await fetch(PRODUCTS_URL, productRequest).then(handleHttpErrors).then(displayResponse("Produkt tilføjet", false));
     } catch (err) {
         if (err.apiError) {
-            console.error("Full API error: ", err.apiError);
             displayResponse(err.apiError.message, true);
         } else {
-            console.error(err.message);
+            // console.error(err.message);
         }
     }
 }

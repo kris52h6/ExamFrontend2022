@@ -3,12 +3,14 @@ import { adjustForMissingHash, loadHtml, renderTemplate, setActiveLink } from ".
 
 import { initProducts } from "./pages/products/products.js";
 import { initAddProduct } from "./pages/addProduct/addProduct.js";
+import { initEditProduct } from "./pages/editProduct/editProduct.js";
 
 window.addEventListener("load", async () => {
     const templateHome = await loadHtml("./pages/home/home.html");
     const templateNotFound = await loadHtml("./pages/notFound/notFound.html");
     const templateProducts = await loadHtml("./pages/products/products.html");
     const templateAddProduct = await loadHtml("./pages/addProduct/addProduct.html");
+    const templateEditProduct = await loadHtml("./pages/editProduct/editProduct.html");
 
     adjustForMissingHash();
 
