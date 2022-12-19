@@ -1,19 +1,19 @@
 <div class="container template">
     <div class="col">
         <h1>Bestilling</h1>
-        
-            <label for="date">Dato:</label>
-            <input id="date" type="text" class="form-control" readonly />
-            <label for="warehouse">Varehus:</label>
-            <input id="warehouse" type="text" class="form-control" readonly />
-            <label for="destination">Destination:</label>
-            <input id="destination" type="text" class="form-control" readonly />
+
+        <label for="date">Dato:</label>
+        <input id="date" type="text" class="form-control" readonly />
+        <label for="warehouse">Varehus:</label>
+        <input id="warehouse" type="text" class="form-control" readonly />
+        <label for="destination">Destination:</label>
+        <input id="destination" type="text" class="form-control" readonly />
     </div>
 
     <div class="row">
         <h1>Produktordre</h1>
         <div class="col">
-            <form>
+            <form id="add-form">
                 <label for="product-name">Produktnavn:</label>
                 <input id="product-name" type="text" placeholder="Indtast produktnavn" class="form-control" required />
                 <label for="product-quantity">Antal:</label>
@@ -34,5 +34,13 @@
             <p id="total-weight">Totalvægt:</p>
         </div>
     </div>
+    <div class="col">
+        <h1>Tilknyt til van</h1>
+        <form id="van-form">
+            <label for="van">Van ID</label>
+            <input id="van" type="number" placeholder="Indtast van id" class="form-control" required />
+            <input id="van-submit" type="submit" value="Tilknyt van" class="btn btn-secondary" />
+        </form>
+        <p class="van-error"></p>
     </div>
 </div>

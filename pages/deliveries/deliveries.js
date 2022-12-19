@@ -20,6 +20,8 @@ function displayDeliveries(deliveries) {
         <tr class="tr">
             <td>${d.id}</td>
             <td>${d.deliveryDate}</td>
+            <td>${d.fromWareHouse}</td>
+            <td>${d.destination}</td>
             <td class="col-1">
             <a id="${d.id}" class="btn btn-dark">Rediger</a>
             </td>

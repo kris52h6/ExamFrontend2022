@@ -7,6 +7,7 @@ import { initEditProduct } from "./pages/editProduct/editProduct.js";
 import { initDeliveries } from "./pages/deliveries/deliveries.js";
 import { initAddDelivery } from "./pages/addDelivery/addDelivery.js";
 import { initEditDelivery } from "./pages/editDelivery/editDelivery.js";
+import { initAssigned } from "./pages/assigned/assigned.js";
 
 window.addEventListener("load", async () => {
     const templateHome = await loadHtml("./pages/home/home.html");
@@ -17,6 +18,7 @@ window.addEventListener("load", async () => {
     const templateDeliveries = await loadHtml("./pages/deliveries/deliveries.html");
     const templateAddDelivery = await loadHtml("./pages/addDelivery/addDelivery.html");
     const templateEditDelivery = await loadHtml("./pages/editDelivery/editDelivery.html");
+    const templateAssigned = await loadHtml("./pages/assigned/assigned.html");
 
     adjustForMissingHash();
 
@@ -57,6 +59,10 @@ window.addEventListener("load", async () => {
             "/editDelivery": () => {
                 renderTemplate(templateEditDelivery, "content");
                 initEditDelivery();
+            },
+            "/assigned": () => {
+                renderTemplate(templateAssigned, "content");
+                initAssigned();
             },
         })
         .notFound(() => {

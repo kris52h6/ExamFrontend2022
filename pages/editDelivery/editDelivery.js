@@ -5,7 +5,8 @@ export function initEditDelivery() {
     getDeliveryFromUrl();
     getProductOrders();
     clearProductForm();
-    document.querySelector("form").addEventListener("submit", addProductToOrder);
+    document.querySelector("#add-form").addEventListener("submit", addProductToOrder);
+    document.querySelector("#van-form").addEventListener("submit", addDeliveryToVan);
 }
 
 async function getDeliveryFromUrl() {
@@ -62,7 +63,6 @@ function displayProductOrders(productOrderList) {
 }
 
 async function addProductToOrder() {
-    console.log("pp");
     const productOrder = createProductOrderFromFormInput();
     const productOrderRequest = makeOptions("POST", productOrder);
 
@@ -86,6 +86,28 @@ function createProductOrderFromFormInput() {
         deliveryId: getIdFromUrl(),
     };
     return productOrder;
+}
+
+async function addDeliveryToVan() {
+    const deliveryId = getIdFromUrl();
+    const vanId = document.querySelector("#van").value;
+
+    const requestBody = {
+        id: deliveryId,
+    };
+
+    const vanRequest = makeOptions("POST", requestBody);
+
+    try {
+        await fetch(DELIVERIES_URL + "/van/" + vanId, vanRequest).then(handleHttpErrors);
+        displayResponse("Bestilling tilknyttet", false);
+    } catch (err) {
+        if (err.apiError) {
+            displayResponse(err.apiError.message, true);
+        } else {
+            // console.error(err.message);
+        }
+    }
 }
 
 function clearProductForm() {
