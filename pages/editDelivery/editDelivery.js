@@ -1,9 +1,10 @@
 import { DELIVERIES_URL, PRODUCTORDERS_URL } from "../../settings.js";
-import { handleHttpErrors, getIdFromUrl, sanitizeStringWithTableRows, makeOptions, displayResponse } from "../../utils.js";
+import { handleHttpErrors, getIdFromUrl, sanitizeStringWithTableRows, makeOptions, displayResponse, clearResponse } from "../../utils.js";
 
 export function initEditDelivery() {
     getDeliveryFromUrl();
     getProductOrders();
+    clearProductForm();
     document.querySelector("form").addEventListener("submit", addProductToOrder);
 }
 
@@ -85,4 +86,10 @@ function createProductOrderFromFormInput() {
         deliveryId: getIdFromUrl(),
     };
     return productOrder;
+}
+
+function clearProductForm() {
+    document.querySelector("#product-name").value = "";
+    document.querySelector("#product-quantity").value = "";
+    clearResponse();
 }
